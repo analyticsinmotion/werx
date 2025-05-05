@@ -64,11 +64,6 @@ print(wer)
 0.2
 ```
 
-#### 3. xxx
-```python
-# Example 3
-
-```
 
 ## 📄 License
 
