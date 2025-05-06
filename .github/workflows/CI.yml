@@ -81,9 +81,10 @@ jobs:
       - name: Print checksums
         shell: cmd
         run: |
-          for %f in (dist\*.whl) do (
-            echo Checksum for %f:
-            CertUtil -hashfile %f SHA256
+          for %%f in (dist\*.whl) do (
+            echo =====================================
+            echo Checksum for %%f:
+            CertUtil -hashfile %%f SHA256
           )
       - name: Upload wheels
         uses: actions/upload-artifact@v4
