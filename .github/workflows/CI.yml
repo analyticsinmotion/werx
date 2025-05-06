@@ -165,6 +165,11 @@ jobs:
       - name: List distributions before upload
         run: ls -lh .
 
+      - name: List and verify artifacts
+        run: |
+          ls -lh ./*.whl
+          file ./*.whl
+
       - name: Validate wheels
         run: |
           for file in ./*.whl; do
