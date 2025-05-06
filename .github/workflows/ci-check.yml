@@ -121,6 +121,8 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'workflow_dispatch' }}
     needs: [linux, windows, macos, sdist]
+    permissions:
+        id-token: write  # Required for OIDC-based publishing
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -134,4 +136,3 @@ jobs:
 
       - name: List distributions
         run: ls -lh .
-        
