@@ -130,6 +130,13 @@ jobs:
       - name: List distributions before upload
         run: ls -lh .
 
+      - name: Validate wheels
+        run: |
+          for file in ./*.whl; do
+            echo "Checking $file"
+            python -m zipfile -t "$file" || { echo "Invalid wheel: $file"; exit 1; }
+          done
+        
       - name: Publish to PyPI (trusted publisher)
         #uses: pypa/gh-action-pypi-publish@v1.8.8
         uses: pypa/gh-action-pypi-publish@release/v1
