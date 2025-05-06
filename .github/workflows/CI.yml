@@ -35,6 +35,11 @@ jobs:
         uses: PyO3/maturin-action@v1
         with:
           args: --release --out dist --interpreter python
+      - name: Add unique suffix to wheel filenames
+        run: |
+          for file in dist/*.whl; do
+            mv "$file" "${file%.whl}-${{ matrix.platform.runner }}.whl"
+          done
       - name: Validate wheels after building
         run: |
           for file in dist/*.whl; do
@@ -170,6 +175,13 @@ jobs:
           ls -lh dist/**/*.whl
           file dist/**/*.whl
 
+      - name: List and verify all artifacts
+        run: |
+          echo "Distributions in dist/"
+          find dist -type f
+          echo "Inspecting file types:"
+          file dist/* 2>/dev/null || true
+          
       - name: Validate wheels
         run: |
           for file in dist/**/*.whl; do
