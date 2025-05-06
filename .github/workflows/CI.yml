@@ -106,6 +106,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'workflow_dispatch' }}
     needs: [linux, windows, macos, sdist]
+    environment: pypi
     permissions:
       # Use to sign the release artifacts
       id-token: write
