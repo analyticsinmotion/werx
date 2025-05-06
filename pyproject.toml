@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "Ross Armstrong", email = "ross.armstrong@analyticsinmotion.com" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 license = {file = 'LICENSE'}
 classifiers = [
     "Development Status :: 4 - Beta",
