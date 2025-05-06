@@ -132,7 +132,7 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v2
         with:
-          subject-path: '{wheels-*/*,sdist-artifact/*}'
+          subject-path: '{wheels-linux-*/*,wheels-windows-*/*,wheels-macos-*/*,sdist-artifact/*}'
 
       - name: List distributions
         run: ls -lh .
