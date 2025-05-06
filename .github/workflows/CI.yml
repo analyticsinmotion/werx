@@ -118,7 +118,7 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v2
         with:
-          subject-path: 'wheels-*/*'
+          subject-path: '{wheels-*/*,sdist-artifact/*}'
       - name: Publish to PyPI
         if: ${{ github.event_name == 'workflow_dispatch' }}
         uses: PyO3/maturin-action@v1
