@@ -165,15 +165,20 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: dist
-          merge-multiple: false
+          #merge-multiple: false
+          merge-multiple: true
 
       - name: List distributions before upload
-        run: ls -lh dist/**/*.whl
+        #run: ls -lh dist/**/*.whl
+        run: ls -lh dist/*.whl
 
       - name: List and verify artifacts
+        #run: |
+        #  ls -lh dist/**/*.whl
+        #  file dist/**/*.whl
         run: |
-          ls -lh dist/**/*.whl
-          file dist/**/*.whl
+          ls -lh dist/*.whl
+          file dist/*.whl
 
       - name: List and verify all artifacts
         run: |
@@ -183,8 +188,13 @@ jobs:
           file dist/* 2>/dev/null || true
           
       - name: Validate wheels
+        #run: |
+        #  for file in dist/**/*.whl; do
+        #    echo "Checking $file"
+        #    python -m zipfile -t "$file" || { echo "Invalid wheel: $file"; exit 1; }
+        #  done
         run: |
-          for file in dist/**/*.whl; do
+          for file in dist/*.whl; do
             echo "Checking $file"
             python -m zipfile -t "$file" || { echo "Invalid wheel: $file"; exit 1; }
           done
