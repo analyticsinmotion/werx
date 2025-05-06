@@ -39,3 +39,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optional dependency groups for 'dev' and 'benchmarks' in 'pyproject.toml'.
 - Updated 'README.md' with project description, installation and usage examples.
 - 'CHANGELOG.md' formatted to support automation via CI release tooling.
+- Introduced a parallel GitHub Actions workflow to validate wheel and sdist builds across Linux, Windows, and macOS without uploading to PyPI. This mirrors the logic and structure of ci.yml, excluding trusted publishing. Useful for testing build artifacts prior to official release.
