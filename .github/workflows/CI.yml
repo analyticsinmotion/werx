@@ -38,7 +38,7 @@ jobs:
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
-          name: wheels-linux
+          name: wheels-linux-${{ matrix.platform.runner }}-${{ matrix.python-version }}
           path: dist
 
   # ----------------------------------------
@@ -62,7 +62,7 @@ jobs:
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
-          name: wheels-windows
+          name: wheels-windows-${{ matrix.python-version }}
           path: dist
 
   # ----------------------------------------
@@ -86,7 +86,7 @@ jobs:
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
-          name: wheels-macos
+          name: wheels-macos-${{ matrix.python-version }}
           path: dist
 
   # ----------------------------------------
@@ -127,16 +127,10 @@ jobs:
           path: .
           merge-multiple: true
 
-      - name: Generate artifact attestation
-        uses: actions/attest-build-provenance@v2
-        with:
-          subject-path: '{wheels-*/*,sdist-artifact/*}'
-
       - name: List distributions before upload
         run: ls -lh .
 
       - name: Publish to PyPI (trusted publisher)
         uses: pypa/gh-action-pypi-publish@v1.8.8
         with:
-          skip-existing: true
           packages-dir: ./
