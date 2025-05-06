@@ -43,7 +43,7 @@ jobs:
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
-          name: wheels-linux-${{ matrix.python-version }}
+          name: wheels-linux-${{ matrix.platform.runner }}-${{ matrix.python-version }}
           path: dist
 
   # ----------------------------------------
@@ -134,3 +134,4 @@ jobs:
 
       - name: List distributions
         run: ls -lh .
+        
