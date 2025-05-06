@@ -159,26 +159,25 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          path: .
-          merge-multiple: true
+          path: dist
+          merge-multiple: false
 
       - name: List distributions before upload
-        run: ls -lh .
+        run: ls -lh dist/**/*.whl
 
       - name: List and verify artifacts
         run: |
-          ls -lh ./*.whl
-          file ./*.whl
+          ls -lh dist/**/*.whl
+          file dist/**/*.whl
 
       - name: Validate wheels
         run: |
-          for file in ./*.whl; do
+          for file in dist/**/*.whl; do
             echo "Checking $file"
             python -m zipfile -t "$file" || { echo "Invalid wheel: $file"; exit 1; }
           done
-        
+
       - name: Publish to PyPI (trusted publisher)
-        #uses: pypa/gh-action-pypi-publish@v1.8.8
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          packages-dir: ./
+          packages-dir: dist
