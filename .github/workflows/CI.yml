@@ -68,13 +68,23 @@ jobs:
         with:
           args: --release --out dist --interpreter python
       - name: Validate wheels after building
+        shell: pwsh
         run: |
-          for file in dist/*.whl; do
-            echo "Checking $file"
-            python -m zipfile -t "$file" || { echo "Invalid wheel: $file"; exit 1; }
-          done
+          Get-ChildItem -Path dist -Filter *.whl | ForEach-Object {
+            Write-Host "Checking $($_.FullName)"
+            python -m zipfile -t $_.FullName
+            if ($LASTEXITCODE -ne 0) {
+              Write-Error "Invalid wheel: $($_.FullName)"
+              exit 1
+            }
+          }  
       - name: Print checksums
-        run: sha256sum dist/*.whl
+        shell: cmd
+        run: |
+          for %f in (dist\*.whl) do (
+            echo Checksum for %f:
+            CertUtil -hashfile %f SHA256
+          )
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
@@ -106,7 +116,7 @@ jobs:
             python -m zipfile -t "$file" || { echo "Invalid wheel: $file"; exit 1; }
           done
       - name: Print checksums
-        run: sha256sum dist/*.whl
+        run: shasum -a 256 dist/*.whl
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
