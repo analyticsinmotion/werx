@@ -37,7 +37,7 @@ jobs:
       - name: Build wheels with maturin
         uses: PyO3/maturin-action@v1
         with:
-          args: --release --out dist --find-interpreter
+          args: --release --out dist --interpreter python
 
       - name: Upload Linux wheel artifacts
         uses: actions/upload-artifact@v4
@@ -64,7 +64,7 @@ jobs:
       - name: Build wheels with maturin
         uses: PyO3/maturin-action@v1
         with:
-          args: --release --out dist --find-interpreter
+          args: --release --out dist --interpreter python
 
       - name: Upload Windows wheel artifacts
         uses: actions/upload-artifact@v4
@@ -91,7 +91,7 @@ jobs:
       - name: Build wheels with maturin
         uses: PyO3/maturin-action@v1
         with:
-          args: --release --out dist --find-interpreter
+          args: --release --out dist --interpreter python
 
       - name: Upload macOS wheel artifacts
         uses: actions/upload-artifact@v4
