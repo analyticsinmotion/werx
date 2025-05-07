@@ -1,6 +1,6 @@
 [project]
 name = "werx"
-version = "0.1.0"
+version = "0.1.1"
 description = "A high-performance Python package for calculating Word Error Rate (WER), powered by Rust."
 readme = "README.md"
 authors = [
