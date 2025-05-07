@@ -16,7 +16,7 @@
 
 You can install WERx either with 'uv' or 'pip'.
 
-### Using 'uv' (recommended for modern workflows):
+### Using 'uv' (recommended):
 ```bash
 uv pip install werx
 ```
