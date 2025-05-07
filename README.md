@@ -1,6 +1,6 @@
+![icon-werx-WIP](https://github.com/user-attachments/assets/697caaa7-98f4-42c4-8ba0-1c8fb99317f8)
 
-
-![icon-werx-WIP](https://github.com/user-attachments/assets/5c0824da-b21d-4134-9c12-8559e1e59160)
+<!-- ![icon-werx-WIP](https://github.com/user-attachments/assets/5c0824da-b21d-4134-9c12-8559e1e59160) -->
 
 <h1 align="center">Lightning fast Word Error Rate Calculations</h1>
 
