@@ -24,14 +24,11 @@ dependencies = []
 requires = ["maturin>=1.8,<2.0"]
 build-backend = "maturin"
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-
 [tool.maturin]
 python-source = "src"
 manifest-path = "werx-core/Cargo.toml"
-#module-name = "werx.werx_rust" # <-- This means the Python module will be accessible as werx.werx_rust
-module-name = "werx_rust"  # <-- Match the import path in wer.py
+module-name = "werx.werx_rust" # <-- This means the Python module will be accessible as werx.werx_rust
+#module-name = "werx_rust"  # <-- Match the import path in wer.py
 bindings = "pyo3"
 include = ["LICENSE", "NOTICE", "README.md", "src/**"]
 
