@@ -1,4 +1,10 @@
-# WERx
+
+
+![icon-werx-WIP](https://github.com/user-attachments/assets/5c0824da-b21d-4134-9c12-8559e1e59160)
+
+<h1 align="center">Lightning fast Word Error Rate Calculations</h1>
+
+
 
 ## What is WERx?
 
