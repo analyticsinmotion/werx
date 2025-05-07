@@ -6,7 +6,8 @@ resolver = "2" # <-- Avoid compiling unnecessary features from dependencies.
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
-name = "werx" # <-- This is the name of the compiled Python module
+#name = "werx" # <-- This is the name of the compiled Python module
+name = "werx_rust"  # <-- Match the module-name in pyproject.toml
 crate-type = ["cdylib"]
 
 [dependencies]

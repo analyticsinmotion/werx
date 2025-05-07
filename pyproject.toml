@@ -32,7 +32,8 @@ package-dir = {"" = "src"}
 [tool.maturin]
 python-source = "src"
 manifest-path = "werx-core/Cargo.toml"
-module-name = "werx.werx_rust" # <-- This means the Python module will be accessible as werx.werx_rust
+#module-name = "werx.werx_rust" # <-- This means the Python module will be accessible as werx.werx_rust
+module-name = "werx_rust"  # <-- Match the import path in wer.py
 bindings = "pyo3"
 
 [project.optional-dependencies]
