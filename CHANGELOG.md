@@ -23,6 +23,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.1.1] - 2025-05-07
+
+### Added
+- MANIFEST.in to include LICENSE, NOTICE, and key source files in the source distribution (sdist).
+- Validation steps in the CI workflow to check .whl and .tar.gz artifacts using zipfile, file, and sha256sum before upload.
+- CI logic for verifying the presence of all distribution files prior to publishing.
+
+### Changed
+GitHub Actions CI workflow to use merge-multiple: true for consolidating build artifacts.
+
+### Fixed
+- ImportError caused by mismatched Rust module export function (PyInit_werx_rust missing).
+- Publishing issues caused by file reuse and broken wheels due to structure mismatches.
+
+### Removed
+- Platform suffixes from wheel filenames to ensure compatibility with PyPI’s strict filename parsing and attestation requirements.
+
+---
+
 ## [0.1.0] - 2025-05-05
 
 ### Added
