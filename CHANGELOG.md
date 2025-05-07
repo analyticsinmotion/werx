@@ -23,6 +23,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.1.2] - 2025-05-07
+
+### Added
+- Explicit inclusion of LICENSE, NOTICE, and README.md files in build artifacts via '[tool.maturin]' include directive to ensure compliance and completeness during packaging.
+
+### Changed
+- Renamed Rust crate from 'werx_rust' to 'werx' to align with Python module name
+- Simplified module integration by using a unified 'werx' namespace for both Rust and Python.
+
+### Fixed
+- PyO3 import warnings about missing 'PyInit_werx_rust'
+- Source distribution upload error due to mismatched symbol name
+
+### Removed
+- Remove memory-profiler from dependencies in pyproject.toml. This is used only for benchmarking and is an optional dependency.
+- Removed '[tool.setuptools]' block from 'pyproject.toml' as it is unused and irrelevant when using 'maturin'. This simplifies the configuration and avoids confusion for future maintainers.
+
+---
+
 ## [0.1.1] - 2025-05-07
 
 ### Added
@@ -31,7 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI logic for verifying the presence of all distribution files prior to publishing.
 
 ### Changed
-GitHub Actions CI workflow to use merge-multiple: true for consolidating build artifacts.
+- GitHub Actions CI workflow to use merge-multiple: true for consolidating build artifacts.
 
 ### Fixed
 - ImportError caused by mismatched Rust module export function (PyInit_werx_rust missing).
