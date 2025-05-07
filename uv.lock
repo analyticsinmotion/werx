@@ -936,11 +936,8 @@ wheels = [
 
 [[package]]
 name = "werx"
-version = "0.1.0"
+version = "0.1.1"
 source = { editable = "." }
-dependencies = [
-    { name = "memory-profiler" },
-]
 
 [package.optional-dependencies]
 benchmarks = [
@@ -961,7 +958,6 @@ dev = [
 requires-dist = [
     { name = "jiwer", marker = "extra == 'benchmarks'" },
     { name = "maturin", marker = "extra == 'dev'", specifier = ">=1.8.3" },
-    { name = "memory-profiler", specifier = ">=0.61.0" },
     { name = "memory-profiler", marker = "extra == 'benchmarks'" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.15.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3.5" },
