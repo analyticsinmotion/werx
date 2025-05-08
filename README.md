@@ -1,15 +1,32 @@
-<!-- ![icon-werx-WIP](https://github.com/user-attachments/assets/697caaa7-98f4-42c4-8ba0-1c8fb99317f8) -->
+![logo-werx](https://github.com/user-attachments/assets/26701780-4809-433d-9920-38c221bd016b)
+
+<h1 align="center">⚡Lightning fast Word Error Rate Calculations</h1>
 
 
-![icon-werx-WIP](https://github.com/user-attachments/assets/26701780-4809-433d-9920-38c221bd016b)
+<!-- badges: start -->
 
+<div align="center">
+  <table>
+    <tr>
+      <td><strong>Meta</strong></td>
+      <td>
+        <a href="https://pypi.org/project/werx/"><img src="https://img.shields.io/pypi/v/werx?label=PyPI&color=blue"></a>&nbsp;
+        <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10%7C3.11%7C3.12%7C3.13-blue?logo=python&logoColor=ffdd54"></a>&nbsp;
+        <a href="https://github.com/analyticsinmotion/werx/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg"></a>&nbsp;
+        <a href="https://github.com/astral-sh/uv"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json" alt="uv"></a>&nbsp;
+        <a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Ruff"></a>&nbsp;
+        <a href="https://www.rust-lang.org"><img src="https://img.shields.io/badge/Powered%20by-Rust-black?logo=rust&logoColor=white" alt="Powered by Rust"></a>&nbsp;
+        <a href="https://www.analyticsinmotion.com"><img src="https://raw.githubusercontent.com/analyticsinmotion/.github/main/assets/images/analytics-in-motion-github-badge-rounded.svg" alt="Analytics in Motion"></a>
+        <!-- &nbsp;
+        <a href="https://pypi.org/project/werx/"><img src="https://img.shields.io/pypi/dm/werx?label=PyPI%20downloads"></a>&nbsp;
+        <a href="https://pepy.tech/project/werx"><img src="https://static.pepy.tech/badge/werx"></a>
+        -->
+      </td>
+    </tr>
+  </table>
+</div>
 
-
-
-
-
-<h1 align="center">Lightning fast Word Error Rate Calculations</h1>
-
+<!-- badges: end -->
 
 
 ## What is WERx?
@@ -28,7 +45,7 @@
 
 You can install WERx either with 'uv' or 'pip'.
 
-### Using 'uv' (recommended):
+### Using uv (recommended):
 ```bash
 uv pip install werx
 ```
