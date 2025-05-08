@@ -12,11 +12,32 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Rust",
     "Programming Language :: Python :: Implementation :: CPython",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
     "Intended Audience :: Developers",
     "Topic :: Scientific/Engineering",
+    "Topic :: Text Processing",
+]
+keywords = [
+    "werx",
+    "wer",
+    "word error rate",
+    "asr",
+    "automatic speech recognition",
+    "stt",
+    "speech-to-text",
+    "levenshtein distance",
+    "text similarity",
+    "nlp",
+    "accuracy metrics"
 ]
 dependencies = []
 
@@ -27,8 +48,6 @@ build-backend = "maturin"
 [tool.maturin]
 python-source = "src"
 manifest-path = "werx-core/Cargo.toml"
-#module-name = "werx.werx_rust" # <-- This means the Python module will be accessible as werx.werx_rust
-#module-name = "werx_rust"  # <-- Match the import path in wer.py
 module-name = "werx"
 bindings = "pyo3"
 include = ["LICENSE", "NOTICE", "README.md", "src/**"]
@@ -48,6 +67,10 @@ benchmarks = [
     "torchmetrics",
     "memory-profiler",
 ]
+
+[project.urls]
+"Repository" = "https://github.com/analyticsinmotion/werx"
+"Bug Tracker" = "https://github.com/analyticsinmotion/werx/issues"
 
 [tool.ruff]
 line-length = 88                     # <-- Max line length, consistent with Black
