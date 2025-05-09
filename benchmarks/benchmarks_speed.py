@@ -5,6 +5,7 @@ import werx
 import jiwer
 import pywer
 from torchmetrics.text import WordErrorRate
+import evaluate  # Import the evaluate package
 
 # --- Test Data (Repeated 10,000 times) ---
 reference_translation = [
@@ -55,12 +56,18 @@ def wer_torchmetrics(ref, hyp):
     score = metric(ref, hyp)
     return score.item()
 
+def wer_evaluate(ref, hyp):
+    metric = evaluate.load("wer")  # Load the evaluate WER metric
+    score = metric.compute(references=ref, predictions=hyp)
+    return score
+
 package_funcs = {
     "werpy": wer_werpy,
     "werx": wer_werx,
     "jiwer": wer_jiwer,
     "pywer": wer_pywer,
     "torchmetrics": wer_torchmetrics,
+    "evaluate": wer_evaluate,  # Add evaluate to the package functions
 }
 
 # --- Benchmarks ---
