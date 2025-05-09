@@ -31,15 +31,14 @@
 
 ## What is WERx?
 
-**WERx** is a high-performance Python package for calculating the Word Error Rate (WER), backed by a Rust core. Designed for speed, safety, and production-grade robustness, it supports both corpus-level and sentence-level WER, as well as weighted variations and diagnostic summaries.
+**WERx** is a high-performance Python package for calculating Word Error Rate (WER), built with Rust for unmatched speed, memory efficiency, and stability. WERx delivers accurate results with exceptional performance, making it ideal for large-scale evaluation tasks.
 
 ## 🚀 Why Use WERx?
 
-- ⚡ **Fast:** Rust-powered core outperforms many pure Python implementations  
-- 🧪 **Accurate:** Deterministic and tested across thousands of examples  
-- 🔒 **Safe:** Handles edge cases gracefully (empty strings, mismatched lengths, etc.)  
-- 🔧 **Flexible:** Supports weighted insertions, deletions, substitutions  
-- 📊 **Insightful:** Sentence-level breakdowns and alignment diagnostics available
+- ⚡ **Blazing Fast:** Rust-powered core delivers outstanding performance, optimized for large datasets  
+- 🧩 **Reliable:** Designed to handle edge cases gracefully, including empty strings and mismatched sequences  
+- 📐 **Accurate:** Carefully tested to ensure consistent and reliable results  
+- 🛡️ **Production-Ready:** Minimal dependencies, memory-efficient, and engineered for stability  
 
 ## 🧩 Installation
 
