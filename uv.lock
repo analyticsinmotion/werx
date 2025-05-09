@@ -936,7 +936,7 @@ wheels = [
 
 [[package]]
 name = "werx"
-version = "0.1.1"
+version = "0.1.2"
 source = { editable = "." }
 
 [package.optional-dependencies]
