@@ -66,6 +66,7 @@ benchmarks = [
     "pywer",
     "torchmetrics",
     "memory-profiler",
+    "datasets",
 ]
 
 [project.urls]
