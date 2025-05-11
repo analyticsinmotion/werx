@@ -61,6 +61,8 @@ uv pip install werx
 pip install werx
 ```
 
+<br/>
+
 ## ✨ Usage
 **Import the WERx package**
 
@@ -99,6 +101,7 @@ print(wer)
 0.2
 ```
 
+<br/>
 
 ## 📄 License
 
