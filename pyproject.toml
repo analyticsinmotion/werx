@@ -65,6 +65,7 @@ benchmarks = [
     "jiwer",
     "pywer",
     "torchmetrics",
+    "evaluate",
     "memory-profiler",
     "datasets",
 ]
