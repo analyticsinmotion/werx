@@ -23,6 +23,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.1.3] - 2025-05-11
+
+### Added
+- Added '[project.urls]' to 'pyproject.toml' for Github repository and issue tracker links.
+- Introduced 'keywords' field in 'pyproject.toml' to improve PyPI discoverability.
+- Support for the 'evaluate' package in the WER benchmarking script.
+- New benchmarking script `benchmarks_librispeech.py` that evaluates and compares the performance and speed of several Word Error Rate (WER) tools using real LibriSpeech evaluation data.
+- Results table includes normalized timing, with WERX as the baseline for comparison.
+
+### Changed
+- Expanded 'classifiers' in 'pyproject.toml' to show supported python versions and operating systems.
+
+### Fixed
+- Fixed a type error in `benchmarks_memory.py` by passing the benchmark function directly to `memory_usage`, ensuring accurate memory profiling for all WER packages.
+
+---
+
 ## [0.1.2] - 2025-05-07
 
 ### Added
