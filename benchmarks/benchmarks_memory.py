@@ -68,7 +68,7 @@ def main():
 
     for name, func in package_funcs.items():
         try:
-            mem_usage = memory_usage((func,), max_iterations=1, retval=True)
+            mem_usage = memory_usage(func, max_iterations=1, retval=True)
             peak_mem = max(mem_usage[0])  # mem_usage[0] is the memory usage list
             wer_value = mem_usage[1]      # mem_usage[1] is the return value
             memory_results[name] = (peak_mem, wer_value)
