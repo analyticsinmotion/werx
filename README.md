@@ -121,7 +121,7 @@ print(wer)
 
 *Results Output:*
 ```
-0.2
+0.15
 ```
 
 <br/>
