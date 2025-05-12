@@ -33,7 +33,7 @@ def weighted_wer(
     >>> ref = ['it was beautiful and sunny today', 'tomorrow may not be as nice']
     >>> hyp = ['it was a beautiful and sunny day', 'tomorrow may not be as nice']
     >>> weighted_wer(ref, hyp, insertion_weight=0.5, deletion_weight=0.5, substitution_weight=1.0)
-    0.16666666666666666
+    0.125
     """
     return _weighted_wer(ref, hyp, insertion_weight, deletion_weight, substitution_weight)
 
