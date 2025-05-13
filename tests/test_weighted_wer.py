@@ -1,7 +1,10 @@
 import pytest
 from werx import weighted_wer, wwer
 
-# Alias tests: Ensure both weighted_wer and wwer produce the same results
+
+# ----------------------------------------------------------------------
+# Test 1: Alias tests: Ensure both weighted_wer and wwer produce the same results
+# ----------------------------------------------------------------------
 def test_weighted_wer_alias_consistency():
     ref = ["i love cold pizza"]
     hyp = ["i love pizza"]
@@ -11,7 +14,7 @@ def test_weighted_wer_alias_consistency():
 
 
 # ----------------------------------------------------------------------
-# Test 1: Basic Weighted WER with Reduced Insertion and Deletion Weights
+# Test 2: Basic Weighted WER with Reduced Insertion and Deletion Weights
 # ----------------------------------------------------------------------
 def test_weighted_wer_basic_weights():
     ref = ["i love cold pizza"]
@@ -22,18 +25,18 @@ def test_weighted_wer_basic_weights():
 
 
 # ----------------------------------------------------------------------
-# Test 2: Two-Sentence Input with Increased Substitution Weight
+# Test 3: Two-Sentence Input with Increased Substitution Weight
 # ----------------------------------------------------------------------
 def test_weighted_wer_high_substitution_weight():
     ref = ["i love cold pizza", "the sugar bear character was popular"]
     hyp = ["i love pizza", "the sugar bare character was popular"]
     # 1 deletion, 1 substitution; deletion_weight = 0.5, substitution_weight = 2.0
-    expected_result = (0.5 + 2.0) / (4 + 6)  # Total words = 10
+    expected_result = 0.15
     assert weighted_wer(ref, hyp, insertion_weight=0.5, deletion_weight=0.5, substitution_weight=2.0) == expected_result
 
 
 # ----------------------------------------------------------------------
-# Test 3: Edge Case with Zero Weights (Should Return 0 Regardless of Errors)
+# Test 4: Edge Case with Zero Weights (Should Return 0 Regardless of Errors)
 # ----------------------------------------------------------------------
 def test_weighted_wer_zero_weights():
     ref = ["i love cold pizza"]
@@ -42,7 +45,7 @@ def test_weighted_wer_zero_weights():
 
 
 # ----------------------------------------------------------------------
-# Test 4: All Weights Set to 1 (Equivalent to Standard WER)
+# Test 5: All Weights Set to 1 (Equivalent to Standard WER)
 # ----------------------------------------------------------------------
 def test_weighted_wer_equivalent_to_standard_wer():
     ref = ["i love cold pizza"]
@@ -52,7 +55,7 @@ def test_weighted_wer_equivalent_to_standard_wer():
 
 
 # ----------------------------------------------------------------------
-# Test 5: Invalid Input Types Should Raise Exceptions
+# Test 6: Invalid Input Types Should Raise Exceptions
 # ----------------------------------------------------------------------
 def test_weighted_wer_invalid_input_types():
     ref = [1, 2, 3]
@@ -62,7 +65,7 @@ def test_weighted_wer_invalid_input_types():
 
 
 # ----------------------------------------------------------------------
-# Test 6: Edge Case with Empty Input Strings — Should Return WER of 0.0
+# Test 7: Edge Case with Empty Input Strings — Should Return WER of 0.0
 # ----------------------------------------------------------------------
 def test_weighted_wer_blank_input():
     ref = [""]
@@ -71,7 +74,7 @@ def test_weighted_wer_blank_input():
 
 
 # ----------------------------------------------------------------------
-# Test 7: Mismatched Reference and Hypothesis Lengths
+# Test 8: Mismatched Reference and Hypothesis Lengths
 # ----------------------------------------------------------------------
 def test_weighted_wer_mismatched_lengths():
     ref = ["hello world", "another sentence"]
@@ -81,7 +84,7 @@ def test_weighted_wer_mismatched_lengths():
 
 
 # ----------------------------------------------------------------------
-# Test 8: None Inputs Should Raise an Exception
+# Test 9: None Inputs Should Raise an Exception
 # ----------------------------------------------------------------------
 def test_weighted_wer_with_none_input():
     ref = None
@@ -93,4 +96,3 @@ def test_weighted_wer_with_none_input():
     hyp = None
     with pytest.raises(Exception):
         weighted_wer(ref, hyp)
-
