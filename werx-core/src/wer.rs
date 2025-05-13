@@ -67,5 +67,3 @@ fn levenshtein_distance(a: &[&str], b: &[&str], dp: &mut Vec<Vec<usize>>) -> usi
 
     dp[m][n]
 }
-
-
