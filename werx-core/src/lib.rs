@@ -2,6 +2,7 @@
 /// Binds Rust functions to Python module using PyO3.
 mod wer;
 mod weighted_wer;
+mod utils;
 
 use pyo3::prelude::*;
 use pyo3::wrap_pyfunction; // Import wrap_pyfunction manually
