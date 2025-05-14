@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.2.0] - TBD
+## [0.2.0] - 2025-05-14
 
 ### Added
 - Implemented `weighted_wer` functionality to calculate Weighted Word Error Rate with customizable weights for insertion, deletion, and substitution errors.
