@@ -23,6 +23,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0] - TBD
+
+### Added
+- Implemented `weighted_wer` functionality to calculate Weighted Word Error Rate with customizable weights for insertion, deletion, and substitution errors.
+- Introduced Python API alias `wwer` for convenience alongside `weighted_wer`.
+- Created `utils.rs` module containing the shared `extract_string_list` utility function, marked as `pub` and `#[inline]` for performance.
+- Added detailed Rust doc comments and Python docstrings, including usage examples and parameter descriptions.
+- Introduced `test_weighted_wer.py` with comprehensive unit tests for the `weighted_wer` function.
+- Verified correct handling of default and custom weight configurations.
+- Added tests for edge cases including zero weights, empty inputs, mismatched lengths, and invalid input types.
+- Benchmark script to compare execution speed between `werx.wer` (standard WER) and `werx.weighted_wer` (weighted WER). 
+- `weighted_wer_results.py` script to visualize weighted WER results and validate benchmark outputs.
+
+### Changed
+- Extracted the `extract_string_list` utility function from `wer.rs` and moved it to a new `utils.rs` module for shared usage.
+- Marked `extract_string_list` as `pub` and `#[inline]` for performance and cross-module access.
+- Updated `wer.rs` to import `extract_string_list` from `utils.rs`.
+- Updated Python `__init__.py` to expose the new `weighted_wer` and `wwer` functions.
+
+---
+
 ## [0.1.3] - 2025-05-11
 
 ### Added

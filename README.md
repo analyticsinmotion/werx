@@ -101,6 +101,29 @@ print(wer)
 0.2
 ```
 
+#### 3. Weighted Word Error Rate Calculation (Custom Weights)
+
+*Python Code:*
+```python
+ref = ['i love cold pizza', 'the sugar bear character was popular']
+hyp = ['i love pizza', 'the sugar bare character was popular']
+
+# Apply lower weight to insertions and deletions, standard weight for substitutions
+wer = werx.weighted_wer(
+    ref, 
+    hyp, 
+    insertion_weight=0.5, 
+    deletion_weight=0.5, 
+    substitution_weight=1.0
+)
+print(wer)
+```
+
+*Results Output:*
+```
+0.15
+```
+
 <br/>
 
 ## 📄 License
