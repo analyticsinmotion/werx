@@ -1,5 +1,6 @@
 from datasets import load_dataset
 import werx
+import werpy
 import timeit
 
 # Load the consolidated CSV from the Hugging Face Hub
@@ -22,8 +23,10 @@ filtered = dataset.filter(
 )
 
 filtered = list(filtered)
-references = [row["reference"] for row in filtered]
-hypotheses = [row["hypothesis"] for row in filtered]
+#references = [row["reference"] for row in filtered]
+#hypotheses = [row["hypothesis"] for row in filtered]
+references = [werpy.normalize(row["reference"]) for row in filtered]
+hypotheses = [werpy.normalize(row["hypothesis"]) for row in filtered]
 
 # --- WER tools ---
 tools = {
