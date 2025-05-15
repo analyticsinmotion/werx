@@ -60,14 +60,19 @@ dev = [
     "ruff >=0.11.8",
     ]
 
+dataframes = [
+    "polars >=1.29.0",
+    "pandas >=2.2.3"
+]
+
 benchmarks = [
-    "werpy",
-    "jiwer",
-    "pywer",
+    "werpy >=3.1.0",
+    "jiwer >=3.1.0",
+    "pywer >=0.1.1",
     "torchmetrics",
-    "evaluate",
-    "memory-profiler",
-    "datasets",
+    "evaluate >=0.4.3",
+    "memory-profiler >=0.61.0",
+    "datasets >=3.6.0",
 ]
 
 [project.urls]
