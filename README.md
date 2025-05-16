@@ -73,7 +73,7 @@ import werx
 
 ### Examples:
 
-#### 1. Single sentence comparison
+### 1. Single sentence comparison
 
 *Python Code:*
 ```python
@@ -86,8 +86,9 @@ print(wer)
 0.25
 ```
 
+<br/>
 
-#### 2. Corpus level Word Error Rate Calculation
+### 2. Corpus level Word Error Rate Calculation
 
 *Python Code:*
 ```python
@@ -102,8 +103,9 @@ print(wer)
 0.2
 ```
 
+<br/>
 
-#### 3. Weighted Word Error Rate Calculation
+### 3. Weighted Word Error Rate Calculation
 
 *Python Code:*
 ```python
@@ -126,14 +128,16 @@ print(wer)
 0.15
 ```
 
+<br/>
 
-#### 4. Complete Word Error Rate Breakdown
+### 4. Complete Word Error Rate Breakdown
 
 The `analysis()` function provides a complete breakdown of word error rates, supporting both standard WER and weighted WER calculations.
 
 It delivers detailed, per-sentence metrics—including insertions, deletions, substitutions, and word-level error tracking—with the flexibility to customize error weights.
 
 Results are easily accessible through standard Python objects or can be conveniently converted into Pandas and Polars DataFrames for further analysis and reporting.
+
 
 #### Getting Started
 
@@ -156,6 +160,7 @@ Inserted Words   : []
 Deleted Words    : []
 Substituted Words: [('fox', 'dog')]
 ```
+
 
 #### View full dataframe Example
 
