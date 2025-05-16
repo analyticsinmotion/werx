@@ -101,7 +101,7 @@ print(wer)
 0.2
 ```
 
-#### 3. Weighted Word Error Rate Calculation (Custom Weights)
+#### 3. Weighted Word Error Rate Calculation
 
 *Python Code:*
 ```python
@@ -123,6 +123,76 @@ print(wer)
 ```
 0.15
 ```
+
+#### 4. Complete Word Error Rate Breakdown
+
+The `analysis()` function provides a complete breakdown and detailed, per-sentence metrics.
+
+#### Basic Example
+
+*Python Code:*
+```python
+ref = ["the quick brown fox"]
+hyp = ["the quick brown dog"]
+
+results = werx.analysis(ref, hyp)
+
+print("Inserted:", results[0].inserted_words)
+print("Deleted:", results[0].deleted_words)
+print("Substituted:", results[0].substituted_words)
+
+```
+
+*Results Output:*
+```
+Inserted Words   : []
+Deleted Words    : []
+Substituted Words: [('fox', 'dog')]
+```
+
+#### View full dataframe Example
+
+**Note:** To use this module, you must have either `pandas` or `polars` (or both) installed.
+
+#### Install Pandas / Polars for DataFrame Conversion
+
+```python
+uv pip install pandas
+uv pip install polars
+```
+
+*Python Code:*
+```python
+results = werx.analysis(
+    ref, hyp,
+    insertion_weight=2,
+    deletion_weight=2,
+    substitution_weight=1
+)
+```
+
+Get ouput dataframe using Polars
+```python
+# Convert to Polars DataFrame
+df_polars = werx.to_polars(results)
+print(df_polars)
+```
+
+Alternatively, get ouput dataframe using Polars
+```python
+# Convert to Pandas DataFrame
+df_pandas = werx.to_pandas(results)
+print(df_pandas)
+```
+
+#### Example Output (DataFrame)
+
+| wer   | wwer  | ld  | n_ref | insertions | deletions | substitutions | inserted_words | deleted_words | substituted_words          |
+|-------|-------|-----|-------|------------|-----------|---------------|----------------|----------------|----------------------------|
+| 0.25  | 0.50  | 1   | 4     | 0          | 0         | 1             | []             | []             | [('brown', 'dog')]          |
+| 0.33  | 0.66  | 2   | 6     | 1          | 0         | 1             | ['cold']       | []             | [('bear', 'bare')]          |
+
+---
 
 <br/>
 
