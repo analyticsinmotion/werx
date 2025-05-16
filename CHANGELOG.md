@@ -34,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated `__init__.py` to expose analysis, to_pandas, and to_polars at the top level for easier access.
 - Updated README.md to include detailed user guide and instructions for using the analysis() function.
 - Documented optional dependency installation steps for Pandas and Polars.
-- Included  instructions for converting analysis results to Pandas and Polars DataFrames using the `to_pandas()` and `to_polars()` utilities.
+- Included instructions for converting analysis results to Pandas and Polars DataFrames using the `to_pandas()` and `to_polars()` utilities.
 
 ### Fixed
 - Added type annotations to all public functions in `utils.py`, resolving Pylance warnings about unknown or missing types.
