@@ -41,7 +41,7 @@
 
 🧩 **Robust:** Designed to handle edge cases gracefully, including empty strings and mismatched sequences<br>
 
-📐 **Accurate:** Carefully tested to ensure consistent and reliable results<br>
+📐 **Insightful:** Provides rich word-level error breakdowns, including substitutions, insertions, deletions, and weighted error rates<br>
 
 🛡️ **Production-Ready:** Minimal dependencies, memory-efficient, and engineered for stability<br> 
 
@@ -134,7 +134,7 @@ print(wer)
 
 The `analysis()` function provides a complete breakdown of word error rates, supporting both standard WER and weighted WER calculations.
 
-It delivers detailed, per-sentence metrics—including insertions, deletions, substitutions, and word-level error tracking—with the flexibility to customize error weights.
+It delivers detailed, per-sentence metrics—including insertions, deletions, substitutions, and word-level error tracking, with the flexibility to customize error weights.
 
 Results are easily accessible through standard Python objects or can be conveniently converted into Pandas and Polars DataFrames for further analysis and reporting.
 
@@ -163,7 +163,7 @@ Substituted Words: [('fox', 'dog')]
 
 <br/>
 
-#### 4b. Converting Analysis Results to DataFrames
+#### 4b. Converting Analysis Results to a DataFrame
 
 *Note:* To use this module, you must have either `pandas` or `polars` (or both) installed.
 
@@ -195,14 +195,14 @@ from werx.utils import to_polars, to_pandas
 You can then easily convert analysis results to get output using **Polars**:
 ```python
 # Convert to Polars DataFrame
-df_polars = werx.to_polars(results)
+df_polars = to_polars(results)
 print(df_polars)
 ```
 
 Alternatively, you can also use **Pandas** depending on your preference:
 ```python
 # Convert to Pandas DataFrame
-df_pandas = werx.to_pandas(results)
+df_pandas = to_pandas(results)
 print(df_pandas)
 ```
 
