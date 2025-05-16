@@ -40,9 +40,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added type annotations to all public functions in `utils.py`, resolving Pylance warnings about unknown or missing types.
 - Improved docstrings and code comments for better clarity and maintainability.
 
-### Removed
-<!-- Add removals/deprecations here -->
-
 ---
 
 ## [0.2.0] - 2025-05-14
