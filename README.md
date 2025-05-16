@@ -86,6 +86,7 @@ print(wer)
 0.25
 ```
 
+
 #### 2. Corpus level Word Error Rate Calculation
 
 *Python Code:*
@@ -100,6 +101,7 @@ print(wer)
 ```
 0.2
 ```
+
 
 #### 3. Weighted Word Error Rate Calculation
 
@@ -124,11 +126,16 @@ print(wer)
 0.15
 ```
 
+
 #### 4. Complete Word Error Rate Breakdown
 
-The `analysis()` function provides a complete breakdown and detailed, per-sentence metrics.
+The `analysis()` function provides a complete breakdown of word error rates, supporting both standard WER and weighted WER calculations.
 
-#### Basic Example
+It delivers detailed, per-sentence metrics—including insertions, deletions, substitutions, and word-level error tracking—with the flexibility to customize error weights.
+
+Results are easily accessible through standard Python objects or can be conveniently converted into Pandas and Polars DataFrames for further analysis and reporting.
+
+#### Getting Started
 
 *Python Code:*
 ```python
@@ -154,8 +161,7 @@ Substituted Words: [('fox', 'dog')]
 
 *Note:* To use this module, you must have either `pandas` or `polars` (or both) installed.
 
-#### Install Pandas / Polars for DataFrame Conversion
-
+*Install Pandas / Polars for DataFrame Conversion*
 ```python
 uv pip install pandas
 uv pip install polars
