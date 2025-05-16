@@ -152,7 +152,7 @@ Substituted Words: [('fox', 'dog')]
 
 #### View full dataframe Example
 
-**Note:** To use this module, you must have either `pandas` or `polars` (or both) installed.
+*Note:* To use this module, you must have either `pandas` or `polars` (or both) installed.
 
 #### Install Pandas / Polars for DataFrame Conversion
 
@@ -163,6 +163,8 @@ uv pip install polars
 
 *Python Code:*
 ```python
+ref = ["i love cold pizza", "the sugar bear character was popular"]
+hyp = ["i love pizza", "the sugar bare character was popular"]
 results = werx.analysis(
     ref, hyp,
     insertion_weight=2,
@@ -170,27 +172,35 @@ results = werx.analysis(
     substitution_weight=1
 )
 ```
+We’ve created a special utility to make working with DataFrames seamless.
+Just import the following helper:
 
-Get ouput dataframe using Polars
+```python
+import werx
+from werx.utils import to_polars, to_pandas
+```
+
+You can then easily convert analysis results to get output using Polars:
 ```python
 # Convert to Polars DataFrame
 df_polars = werx.to_polars(results)
 print(df_polars)
 ```
 
-Alternatively, get ouput dataframe using Polars
+Alternatively, you can also use Pandas depending on your preference:
 ```python
 # Convert to Pandas DataFrame
 df_pandas = werx.to_pandas(results)
 print(df_pandas)
 ```
 
-#### Example Output (DataFrame)
+*Results Output:*
 
-| wer   | wwer  | ld  | n_ref | insertions | deletions | substitutions | inserted_words | deleted_words | substituted_words          |
-|-------|-------|-----|-------|------------|-----------|---------------|----------------|----------------|----------------------------|
-| 0.25  | 0.50  | 1   | 4     | 0          | 0         | 1             | []             | []             | [('brown', 'dog')]          |
-| 0.33  | 0.66  | 2   | 6     | 1          | 0         | 1             | ['cold']       | []             | [('bear', 'bare')]          |
+| wer    | wwer   | ld  | n_ref | insertions | deletions | substitutions | inserted_words | deleted_words | substituted_words   |
+|--------|--------|-----|-------|------------|-----------|---------------|----------------|----------------|---------------------|
+| 0.25   | 0.50   | 1   | 4     | 0          | 1         | 0             | []             | ['cold']       | []                  |
+| 0.1667 | 0.1667 | 1   | 6     | 0          | 0         | 1             | []             | []             | [('bear', 'bare')]   |
+     |
 
 ---
 
