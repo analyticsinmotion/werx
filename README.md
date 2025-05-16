@@ -192,14 +192,14 @@ import werx
 from werx.utils import to_polars, to_pandas
 ```
 
-You can then easily convert analysis results to get output using Polars:
+You can then easily convert analysis results to get output using **Polars**:
 ```python
 # Convert to Polars DataFrame
 df_polars = werx.to_polars(results)
 print(df_polars)
 ```
 
-Alternatively, you can also use Pandas depending on your preference:
+Alternatively, you can also use **Pandas** depending on your preference:
 ```python
 # Convert to Pandas DataFrame
 df_pandas = werx.to_pandas(results)
