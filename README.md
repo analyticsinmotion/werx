@@ -139,7 +139,7 @@ It delivers detailed, per-sentence metrics—including insertions, deletions, su
 Results are easily accessible through standard Python objects or can be conveniently converted into Pandas and Polars DataFrames for further analysis and reporting.
 
 
-#### Getting Started
+#### 4a. Getting Started
 
 *Python Code:*
 ```python
@@ -161,8 +161,9 @@ Deleted Words    : []
 Substituted Words: [('fox', 'dog')]
 ```
 
+<br/>
 
-#### View full dataframe Example
+#### 4b. Converting Analysis Results to DataFrames
 
 *Note:* To use this module, you must have either `pandas` or `polars` (or both) installed.
 
