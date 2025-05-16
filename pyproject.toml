@@ -1,6 +1,6 @@
 [project]
 name = "werx"
-version = "0.2.0"
+version = "0.3.0"
 description = "A high-performance Python package for calculating Word Error Rate (WER), powered by Rust."
 readme = "README.md"
 authors = [
@@ -9,7 +9,7 @@ authors = [
 requires-python = ">=3.10"
 license = {file = 'LICENSE'}
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
@@ -60,14 +60,19 @@ dev = [
     "ruff >=0.11.8",
     ]
 
+dataframes = [
+    "polars >=1.29.0",
+    "pandas >=2.2.3"
+]
+
 benchmarks = [
-    "werpy",
-    "jiwer",
-    "pywer",
+    "werpy >=3.1.0",
+    "jiwer >=3.1.0",
+    "pywer >=0.1.1",
     "torchmetrics",
-    "evaluate",
-    "memory-profiler",
-    "datasets",
+    "evaluate >=0.4.3",
+    "memory-profiler >=0.61.0",
+    "datasets >=3.6.0",
 ]
 
 [project.urls]

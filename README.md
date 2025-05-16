@@ -41,7 +41,7 @@
 
 🧩 **Robust:** Designed to handle edge cases gracefully, including empty strings and mismatched sequences<br>
 
-📐 **Accurate:** Carefully tested to ensure consistent and reliable results<br>
+📐 **Insightful:** Provides rich word-level error breakdowns, including substitutions, insertions, deletions, and weighted error rates<br>
 
 🛡️ **Production-Ready:** Minimal dependencies, memory-efficient, and engineered for stability<br> 
 
@@ -73,7 +73,7 @@ import werx
 
 ### Examples:
 
-#### 1. Single sentence comparison
+### 1. Single sentence comparison
 
 *Python Code:*
 ```python
@@ -86,7 +86,9 @@ print(wer)
 0.25
 ```
 
-#### 2. Corpus level Word Error Rate Calculation
+<br/>
+
+### 2. Corpus level Word Error Rate Calculation
 
 *Python Code:*
 ```python
@@ -101,7 +103,9 @@ print(wer)
 0.2
 ```
 
-#### 3. Weighted Word Error Rate Calculation (Custom Weights)
+<br/>
+
+### 3. Weighted Word Error Rate Calculation
 
 *Python Code:*
 ```python
@@ -123,6 +127,92 @@ print(wer)
 ```
 0.15
 ```
+
+<br/>
+
+### 4. Complete Word Error Rate Breakdown
+
+The `analysis()` function provides a complete breakdown of word error rates, supporting both standard WER and weighted WER calculations.
+
+It delivers detailed, per-sentence metrics—including insertions, deletions, substitutions, and word-level error tracking, with the flexibility to customize error weights.
+
+Results are easily accessible through standard Python objects or can be conveniently converted into Pandas and Polars DataFrames for further analysis and reporting.
+
+
+#### 4a. Getting Started
+
+*Python Code:*
+```python
+ref = ["the quick brown fox"]
+hyp = ["the quick brown dog"]
+
+results = werx.analysis(ref, hyp)
+
+print("Inserted:", results[0].inserted_words)
+print("Deleted:", results[0].deleted_words)
+print("Substituted:", results[0].substituted_words)
+
+```
+
+*Results Output:*
+```
+Inserted Words   : []
+Deleted Words    : []
+Substituted Words: [('fox', 'dog')]
+```
+
+<br/>
+
+#### 4b. Converting Analysis Results to a DataFrame
+
+*Note:* To use this module, you must have either `pandas` or `polars` (or both) installed.
+
+*Install Pandas / Polars for DataFrame Conversion*
+```python
+uv pip install pandas
+uv pip install polars
+```
+
+*Python Code:*
+```python
+ref = ["i love cold pizza", "the sugar bear character was popular"]
+hyp = ["i love pizza", "the sugar bare character was popular"]
+results = werx.analysis(
+    ref, hyp,
+    insertion_weight=2,
+    deletion_weight=2,
+    substitution_weight=1
+)
+```
+We’ve created a special utility to make working with DataFrames seamless.
+Just import the following helper:
+
+```python
+import werx
+from werx.utils import to_polars, to_pandas
+```
+
+You can then easily convert analysis results to get output using **Polars**:
+```python
+# Convert to Polars DataFrame
+df_polars = to_polars(results)
+print(df_polars)
+```
+
+Alternatively, you can also use **Pandas** depending on your preference:
+```python
+# Convert to Pandas DataFrame
+df_pandas = to_pandas(results)
+print(df_pandas)
+```
+
+*Results Output:*
+
+| wer    | wwer   | ld  | n_ref | insertions | deletions | substitutions | inserted_words | deleted_words | substituted_words   |
+|--------|--------|-----|-------|------------|-----------|---------------|----------------|----------------|---------------------|
+| 0.25   | 0.50   | 1   | 4     | 0          | 1         | 0             | []             | ['cold']       | []                  |
+| 0.1667 | 0.1667 | 1   | 6     | 0          | 0         | 1             | []             | []             | [('bear', 'bare')]   |
+
 
 <br/>
 

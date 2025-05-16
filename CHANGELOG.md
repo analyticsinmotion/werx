@@ -23,6 +23,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] - 2025-05-16
+
+### Added
+- `wer_analysis` module for detailed WER analytics and word-level error breakdown
+- New utilities: `to_pandas()` and `to_polars()` for converting analysis results into Pandas and Polars DataFrames.
+
+### Changed
+- Added minimum version requirements for all packages in [project.optional-dependencies] in pyproject.toml. This improves dependency management and reduces risk of incompatibility with older package versions.
+- Updated `__init__.py` to expose analysis, to_pandas, and to_polars at the top level for easier access.
+- Updated README.md to include detailed user guide and instructions for using the analysis() function.
+- Documented optional dependency installation steps for Pandas and Polars.
+- Included  instructions for converting analysis results to Pandas and Polars DataFrames using the `to_pandas()` and `to_polars()` utilities.
+
+### Fixed
+- Added type annotations to all public functions in `utils.py`, resolving Pylance warnings about unknown or missing types.
+- Improved docstrings and code comments for better clarity and maintainability.
+
+---
+
 ## [0.2.0] - 2025-05-14
 
 ### Added
