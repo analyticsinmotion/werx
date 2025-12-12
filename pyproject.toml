@@ -17,6 +17,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Rust",
     "Programming Language :: Python :: Implementation :: CPython",
     "Operating System :: Microsoft :: Windows",
@@ -82,12 +83,12 @@ benchmarks = [
 
 [tool.ruff]
 line-length = 88                     # <-- Max line length, consistent with Black
-target-version = "py313"             # <-- Target Python 3.13
+target-version = "py314"             # <-- Target Python 3.14
 extend-include = ["benchmarks"]      # <-- Also lint the benchmarks directory
 extend-exclude = ["werx-core"]       # <-- Exclude the Rust source code directory
 
 [tool.mypy]
-python_version = "3.13"              # <-- Target Python 3.13
+python_version = "3.14"              # <-- Target Python 3.14
 ignore_missing_imports = true        # <-- Suppress errors for 3rd-party packages without stubs
 strict = true                        # <-- Enable strict mode for safer code
 exclude = "^(tests|benchmarks)/"     # <-- Exclude tests and benchmarks from type checking
