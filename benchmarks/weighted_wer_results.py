@@ -51,7 +51,7 @@ print("Test 5 Result:", test5)
 try:
     ref = [1, 2, 3]
     hyp = [2, 3, 4]
-    test6 = weighted_wer(ref, hyp)
+    test6 = weighted_wer(ref, hyp) # type: ignore[arg-type]
 except Exception as e:
     print("Test 6 Result: Exception Raised -", e)
 
@@ -79,14 +79,14 @@ except Exception as e:
 try:
     ref = None
     hyp = ["hello world"]
-    test9a = weighted_wer(ref, hyp)
+    test9a = weighted_wer(ref, hyp) # type: ignore[arg-type]
 except Exception as e:
     print("Test 9a Result: Exception Raised -", e)
 
 try:
     ref = ["hello world"]
     hyp = None
-    test9b = weighted_wer(ref, hyp)
+    test9b = weighted_wer(ref, hyp) # type: ignore[arg-type]
 except Exception as e:
     print("Test 9b Result: Exception Raised -", e)
 
