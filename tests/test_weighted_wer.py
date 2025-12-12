@@ -61,7 +61,7 @@ def test_weighted_wer_invalid_input_types():
     ref = [1, 2, 3]
     hyp = [2, 3, 4]
     with pytest.raises(Exception):
-        weighted_wer(ref, hyp)
+        weighted_wer(ref, hyp)  # type: ignore[arg-type]
 
 
 # ----------------------------------------------------------------------
@@ -90,9 +90,9 @@ def test_weighted_wer_with_none_input():
     ref = None
     hyp = ["hello world"]
     with pytest.raises(Exception):
-        weighted_wer(ref, hyp)
+        weighted_wer(ref, hyp)  # type: ignore[arg-type]
 
     ref = ["hello world"]
     hyp = None
     with pytest.raises(Exception):
-        weighted_wer(ref, hyp)
+        weighted_wer(ref, hyp)  # type: ignore[arg-type]
