@@ -8,16 +8,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.3.1] - 2025-12-
+## [0.3.1] - 2025-12-12
 
 ### Added
-<!-- Add new features here -->
+
+- Added official support for Python 3.14 across project metadata and CI pipelines.
+- Added universal-edit-distance (v0.4.3) as an additional WER baseline in benchmarking scripts.
+- Integrated `ued.word_error_rate(refs, hyps)` into `benchmarks/speed_comparison_librispeech_data.py` for runtime comparison.
+- Integrated universal-edit-distance into `benchmarks/memory_comparison_synthetic_data.py` for peak memory usage comparison.
+- Added an explicit `[profile.dev]` configuration to align optimization settings with release builds while retaining debug symbols.
 
 ### Changed
-<!-- Add changed behavior here -->
+
+- Updated `pyproject.toml`, `CI.yml`, and `ci-check.yml` to test and build against Python 3.14.
+- Updated Rust dependencies: pyo3 to 0.27.2 and rayon to 1.11.0.
+- Updated PyO3 usage in `wer_analysis.rs` to replace deprecated `PyObject` with `Py<PyAny>`.
+- Replaced deprecated `Python::with_gil` with `Python::attach` to align with PyO3 0.27.x APIs.
+- Enabled symbol stripping in `[profile.release]` to reduce PyPI wheel size.
+- Aligned LTO, codegen units, and optimization level across dev and release profiles for consistent performance characteristics.
+- Updated development dependencies to latest versions, including maturin, pytest, mypy, and ruff.
+- Updated dataframe dependencies to latest versions of polars and pandas.
+- Updated benchmark dependencies to latest versions, including jiwer, evaluate, datasets, and related tooling.
+- Temporarily disabled torchmetrics and universal-edit-distance benchmarks due to missing Python 3.14 wheels.
+- Updated benchmark scripts to run cleanly on Python 3.14 without torch-based dependencies.
+- Updated weighted WER test script to suppress static type checker errors for intentional invalid input test cases.
 
 ### Fixed
-<!-- Add bug fixes here -->
+
+- Removed PyO3 deprecation warnings during Rust extension compilation.
 
 ### Removed
 <!-- Add removals/deprecations here -->
