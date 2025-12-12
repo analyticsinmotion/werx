@@ -10,8 +10,8 @@ name = "werx" # <-- This is the name of the compiled Python module
 crate-type = ["cdylib"]
 
 [dependencies]
-pyo3 = { version = "0.24.2", features = ["extension-module"] }
-rayon = "1.10.0"
+pyo3 = { version = "0.27.2", features = ["extension-module"] }
+rayon = "1.11.0"
 
 [profile.release]
 lto = true          # <-- Enable Link-Time Optimization
