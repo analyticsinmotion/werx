@@ -69,9 +69,9 @@ benchmarks = [
     "werpy >=3.1.0",
     "jiwer >=4.0.0",
     "pywer >=0.1.1",
-    "torchmetrics",
+    # "torchmetrics", # TODO: Uncomment when torch supports Python 3.14
     "evaluate >=0.4.6",
-    "universal-edit-distance >=0.4.3",
+    # "universal-edit-distance >=0.4.3", # TODO: Uncomment when torch supports Python 3.14
     "memory-profiler >=0.61.0",
     "datasets >=4.4.1",
 ]

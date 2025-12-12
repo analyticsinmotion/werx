@@ -2,10 +2,10 @@ from datasets import load_dataset
 import werpy
 import werx
 import jiwer
-from torchmetrics.text import WordErrorRate as TorchWER
+# from torchmetrics.text import WordErrorRate as TorchWER # TODO: Uncomment when supports Python 3.14
 import pywer
 import evaluate
-import universal_edit_distance as ued
+# import universal_edit_distance as ued # TODO: Uncomment when supports Python 3.14
 import timeit
 
 # Load the consolidated CSV from the Hugging Face Hub
@@ -37,10 +37,10 @@ tools = {
     "WERX": werx.wer,
     "WERPY": werpy.wer,
     "JIWER": jiwer.wer,
-    "TORCHMETRICS": lambda r, h: TorchWER()(r, h).item(),
+    # "TORCHMETRICS": lambda r, h: TorchWER()(r, h).item(), # TODO: Uncomment when supports Python 3.14
     "PYWER": lambda r, h: pywer.wer(r, h) / 100.0,  # pywer returns percent
     "EVALUATE": lambda r, h: wer_metric.compute(predictions=h, references=r),
-    "UED": lambda r, h: ued.word_error_rate(r, h),
+    # "UED": lambda r, h: ued.word_error_rate(r, h), # TODO: Uncomment when supports Python 3.14
 }
 
 # --- Run + time each tool using timeit ---
