@@ -6,6 +6,7 @@ import jiwer
 import pywer
 from torchmetrics.text import WordErrorRate
 import evaluate  # Import the evaluate package
+import universal_edit_distance as ued
 
 # --- Test Data (Repeated 10,000 times) ---
 reference_translation = [
@@ -61,6 +62,9 @@ def wer_evaluate(ref, hyp):
     score = metric.compute(references=ref, predictions=hyp)
     return score
 
+def wer_ued(ref, hyp):
+    return ued.word_error_rate(ref, hyp)
+
 package_funcs = {
     "werpy": wer_werpy,
     "werx": wer_werx,
@@ -68,6 +72,7 @@ package_funcs = {
     "pywer": wer_pywer,
     "torchmetrics": wer_torchmetrics,
     "evaluate": wer_evaluate,  # Add evaluate to the package functions
+    "ued": wer_ued,
 }
 
 # --- Benchmarks ---

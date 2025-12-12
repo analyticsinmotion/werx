@@ -4,6 +4,7 @@ import werx
 import jiwer
 import pywer
 from torchmetrics.text import WordErrorRate
+import universal_edit_distance as ued
 
 # --- Test Data (Repeated 1000 times) ---
 reference_translation = [
@@ -54,12 +55,16 @@ def wer_torchmetrics():
     score = metric(ref, hyp)
     return score.item()
 
+def wer_ued():
+    return ued.word_error_rate(ref, hyp)
+
 package_funcs = {
     "werpy": wer_werpy,
     "werx": wer_werx,
     "jiwer": wer_jiwer,
     "pywer": wer_pywer,
     "torchmetrics": wer_torchmetrics,
+    "ued": wer_ued,
 }
 
 def main():

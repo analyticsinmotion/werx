@@ -5,6 +5,7 @@ import jiwer
 from torchmetrics.text import WordErrorRate as TorchWER
 import pywer
 import evaluate
+import universal_edit_distance as ued
 import timeit
 
 # Load the consolidated CSV from the Hugging Face Hub
@@ -39,6 +40,7 @@ tools = {
     "TORCHMETRICS": lambda r, h: TorchWER()(r, h).item(),
     "PYWER": lambda r, h: pywer.wer(r, h) / 100.0,  # pywer returns percent
     "EVALUATE": lambda r, h: wer_metric.compute(predictions=h, references=r),
+    "UED": lambda r, h: ued.word_error_rate(r, h),
 }
 
 # --- Run + time each tool using timeit ---
