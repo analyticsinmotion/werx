@@ -234,19 +234,19 @@ print(df_pandas)
 
 WERx was benchmarked on the **LibriSpeech test sets** (industry-standard ASR benchmark) evaluating OpenAI Whisper-base transcriptions:
 
-| Dataset | Sentences | Total Time (ms) | Throughput |
-|---------|-----------|-----------------|------------|
-| test-clean | 2,620 | 3.35 | 781,791 sent/s |
-| test-other | 2,939 | 2.78 | 1,057,194 sent/s |
-| **Combined** | **5,559** | **6.13** | **~907,000 sent/s** |
+| Dataset | Utterances | Total Time (ms) | Throughput |
+|---------|------------|-----------------|------------|
+| test-clean | 2,620 | 3.35 | 781,791 utt/s |
+| test-other | 2,939 | 2.78 | 1,057,194 utt/s |
+| **Combined** | **5,559** | **6.13** | **~907,000 utt/s** |
 
 ### What This Means in Practice
 
 **Evaluating ASR at scale (WER computation only):**
 
-- 1 million sentences: **~1.1 seconds** at ~907,000 sent/s
-- 1-hour podcast (~3,000 sentences): **~3.3 ms** of WER computation
-- Large corpora (millions of sentences): **minutes, not hours**
+- 1 million utterances: **~1.1 seconds** at ~907,000 utt/s
+- 1-hour podcast (~3,000 utterances): **~3.3 ms** of WER computation
+- Large corpora (millions of utterances): **seconds, not hours**
 
 ### Technical Performance
 
@@ -272,7 +272,7 @@ uv run benchmarks/speed_comparison_librispeech_full.py
 
 See the [`benchmarks/`](benchmarks/) directory for all benchmark scripts.
 
-> 📊 **Benchmark Details**: [LibriSpeech](https://www.openslr.org/12/) test-clean + test-other (5,559 sentences), OpenAI Whisper-base (v20240930), Python 3.14.2, averaged over 10 runs
+> 📊 **Benchmark Details**: [LibriSpeech](https://www.openslr.org/12/) test-clean + test-other (5,559 utterances), OpenAI Whisper-base (v20240930), Python 3.14.2, averaged over 10 runs
 >
 > **Environment**: 16-core (24 threads) CPU, 64 GB RAM, NVMe SSD; single process, all data in RAM. Results are CPU-bound; no GPU is used for WER.
 
