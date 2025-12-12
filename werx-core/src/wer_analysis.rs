@@ -39,8 +39,8 @@ pub struct WerAnalysisResult {
 
 #[pymethods]
 impl WerAnalysisResult {
-    pub fn to_dict(&self) -> PyResult<PyObject> {
-        Python::with_gil(|py| {
+    pub fn to_dict(&self) -> PyResult<Py<PyAny>> {
+        Python::attach(|py| {
             let dict = pyo3::types::PyDict::new(py);
             dict.set_item("wer", self.wer)?;
             dict.set_item("wwer", self.wwer)?;
