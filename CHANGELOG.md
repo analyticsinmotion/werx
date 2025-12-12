@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Optimized standard WER calculation by replacing full O(m×n) matrix allocation with space-efficient rolling window approach, reducing memory usage from O(m×n) to O(n) and improving performance.
 - Updated `pyproject.toml`, `CI.yml`, and `ci-check.yml` to test and build against Python 3.14.
 - Updated Rust dependencies: pyo3 to 0.27.2 and rayon to 1.11.0.
 - Updated PyO3 usage in `wer_analysis.rs` to replace deprecated `PyObject` with `Py<PyAny>`.
@@ -32,6 +33,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Temporarily disabled torchmetrics and universal-edit-distance benchmarks due to missing Python 3.14 wheels.
 - Updated benchmark scripts to run cleanly on Python 3.14 without torch-based dependencies.
 - Updated weighted WER test script to suppress static type checker errors for intentional invalid input test cases.
+- Refactored `align_and_stats` function in `wer_analysis.rs` to return a named `AlignmentStats` struct instead of a complex 7-element tuple, improving code readability and resolving Clippy type complexity warnings with zero performance impact.
+- Added `speed_comparison_librispeech_full.py` benchmark script to evaluate WERx performance across both LibriSpeech test-clean and test-other datasets (5,559 total utterances), providing comprehensive real-world performance metrics for README documentation.
 
 ### Fixed
 
