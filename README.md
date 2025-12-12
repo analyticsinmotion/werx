@@ -230,6 +230,53 @@ print(df_pandas)
 
 <br/>
 
+## 🚀 Performance Benchmarks
+
+WERx was benchmarked on the **LibriSpeech test sets** (industry-standard ASR benchmark) evaluating OpenAI Whisper-base transcriptions:
+
+| Dataset | Utterances | Time | Throughput |
+|---------|------------|------|------------|
+| test-clean | 2,620 | 3.35 ms | 781,791 utt/s |
+| test-other | 2,939 | 2.78 ms | 1,057,194 utt/s |
+| **Combined** | **5,559** | **6.13 ms** | **~907,000 utt/s** |
+
+### What This Means in Practice
+
+**Evaluating ASR at scale:**
+
+- 1 million utterances: **~19 minutes**
+- 1-hour podcast (~3,000 utterances): **3.3 ms**
+- Entire audiobook dataset: **seconds, not hours**
+
+### Technical Performance
+
+**Memory Efficiency:**
+
+- Space complexity: **O(n)** vs O(m×n) traditional implementations
+- Rolling window algorithm reduces memory by 5-50× depending on sentence length
+
+**Parallelization:**
+
+- Rayon-based automatic multi-core scaling
+- Near-linear speedup with CPU cores
+
+### Running Benchmarks Yourself
+
+```bash
+# Install with benchmark dependencies
+uv pip install werx[benchmarks]
+
+# Run full LibriSpeech benchmark
+uv run benchmarks/speed_comparison_librispeech_full.py
+```
+
+See the [`benchmarks/`](benchmarks/) directory for all benchmark scripts.
+
+> 📊 **Benchmark Details**: [LibriSpeech](https://www.openslr.org/12/) test-clean + test-other (5,559 utterances), OpenAI Whisper-base (v20240930), Python 3.14.2, averaged over 10 runs
+> **Environment**: 16-core (24 threads) CPU, 64 GB RAM, NVMe SSD; single process, all data in RAM. Results are CPU-bound; no GPU is used for WER.
+
+<br/>
+
 ## 📄 License
 
 This project is licensed under the Apache License 2.0.
