@@ -1,6 +1,6 @@
 [package]
 name = "werx" # <-- Rust crate name
-version = "0.3.0"
+version = "0.3.1"
 edition = "2021"
 resolver = "2" # <-- Avoid compiling unnecessary features from dependencies.
 
@@ -10,10 +10,17 @@ name = "werx" # <-- This is the name of the compiled Python module
 crate-type = ["cdylib"]
 
 [dependencies]
-pyo3 = { version = "0.24.2", features = ["extension-module"] }
-rayon = "1.10.0"
+pyo3 = { version = "0.27.2", features = ["extension-module"] }
+rayon = "1.11.0"
 
 [profile.release]
 lto = true          # <-- Enable Link-Time Optimization
 codegen-units = 1   # <-- Single compilation unit for better optimization
 opt-level = 3       # <-- Full optimization for speed
+strip = true        # Strip symbols for smaller PyPI wheels
+
+[profile.dev]
+lto = true          # Match release optimization
+codegen-units = 1   # Match release optimization
+opt-level = 3       # Match release optimization
+debug = true        # Keep debug symbols for development

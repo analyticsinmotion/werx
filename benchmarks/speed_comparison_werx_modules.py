@@ -32,7 +32,8 @@ hypotheses = [werpy.normalize(row["hypothesis"]) for row in filtered]
 tools = {
     "WERX (Standard)": lambda r, h: werx.wer(r, h),
     "WERX (Weighted)": lambda r, h: werx.weighted_wer(
-        r, h, insertion_weight=2.0, deletion_weight=2.0, substitution_weight=1.0
+        # r, h, insertion_weight=2.0, deletion_weight=2.0, substitution_weight=1.0
+        r, h, insertion_weight=1.0, deletion_weight=1.0, substitution_weight=1.0
     ),
 }
 

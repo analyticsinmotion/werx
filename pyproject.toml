@@ -1,6 +1,6 @@
 [project]
 name = "werx"
-version = "0.3.0"
+version = "0.3.1"
 description = "A high-performance Python package for calculating Word Error Rate (WER), powered by Rust."
 readme = "README.md"
 authors = [
@@ -17,6 +17,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Rust",
     "Programming Language :: Python :: Implementation :: CPython",
     "Operating System :: Microsoft :: Windows",
@@ -54,25 +55,26 @@ include = ["LICENSE", "NOTICE", "README.md", "src/**"]
 
 [project.optional-dependencies]
 dev = [
-    "maturin >=1.8.3",
-    "pytest >=8.3.5",
-    "mypy >=1.15.0",
-    "ruff >=0.11.8",
+    "maturin >=1.10.2",
+    "pytest >=9.0.2",
+    "mypy >=1.19.0",
+    "ruff >=0.14.9",
     ]
 
 dataframes = [
-    "polars >=1.29.0",
-    "pandas >=2.2.3"
+    "polars >=1.36.1",
+    "pandas >=2.3.3"
 ]
 
 benchmarks = [
     "werpy >=3.1.0",
-    "jiwer >=3.1.0",
+    "jiwer >=4.0.0",
     "pywer >=0.1.1",
-    "torchmetrics",
-    "evaluate >=0.4.3",
+    # "torchmetrics", # TODO: Uncomment when torch supports Python 3.14
+    "evaluate >=0.4.6",
+    # "universal-edit-distance >=0.4.3", # TODO: Uncomment when torch supports Python 3.14
     "memory-profiler >=0.61.0",
-    "datasets >=3.6.0",
+    "datasets >=4.4.1",
 ]
 
 [project.urls]
@@ -81,12 +83,12 @@ benchmarks = [
 
 [tool.ruff]
 line-length = 88                     # <-- Max line length, consistent with Black
-target-version = "py313"             # <-- Target Python 3.13
+target-version = "py314"             # <-- Target Python 3.14
 extend-include = ["benchmarks"]      # <-- Also lint the benchmarks directory
 extend-exclude = ["werx-core"]       # <-- Exclude the Rust source code directory
 
 [tool.mypy]
-python_version = "3.13"              # <-- Target Python 3.13
+python_version = "3.14"              # <-- Target Python 3.14
 ignore_missing_imports = true        # <-- Suppress errors for 3rd-party packages without stubs
 strict = true                        # <-- Enable strict mode for safer code
 exclude = "^(tests|benchmarks)/"     # <-- Exclude tests and benchmarks from type checking

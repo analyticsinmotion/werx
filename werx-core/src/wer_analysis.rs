@@ -13,6 +13,24 @@ enum Op {
     Del,
 }
 
+/// Statistics from word alignment between reference and hypothesis.
+struct AlignmentStats {
+    /// Levenshtein distance
+    distance: usize,
+    /// Number of insertions
+    insertions: usize,
+    /// Number of deletions
+    deletions: usize,
+    /// Number of substitutions
+    substitutions: usize,
+    /// Words that were inserted
+    inserted_words: Vec<String>,
+    /// Words that were deleted
+    deleted_words: Vec<String>,
+    /// Pairs of (reference_word, hypothesis_word) that were substituted
+    substituted_pairs: Vec<(String, String)>,
+}
+
 #[pyclass]
 pub struct WerAnalysisResult {
     #[pyo3(get)]
@@ -39,8 +57,8 @@ pub struct WerAnalysisResult {
 
 #[pymethods]
 impl WerAnalysisResult {
-    pub fn to_dict(&self) -> PyResult<PyObject> {
-        Python::with_gil(|py| {
+    pub fn to_dict(&self) -> PyResult<Py<PyAny>> {
+        Python::attach(|py| {
             let dict = pyo3::types::PyDict::new(py);
             dict.set_item("wer", self.wer)?;
             dict.set_item("wwer", self.wwer)?;
@@ -86,26 +104,26 @@ pub fn analysis<'py>(
         .par_iter()
         .zip(hyps.par_iter())
         .map(|(r, h)| {
-            let (ld, ins, dels, subs, ins_words, del_words, sub_words) = align_and_stats(r, h);
+            let stats = align_and_stats(r, h);
             let n_ref = r.split_whitespace().count();
-            let wer = ld as f64 / n_ref.max(1) as f64;
+            let wer = stats.distance as f64 / n_ref.max(1) as f64;
             let wwer = (
-                insertion_weight * ins as f64 +
-                deletion_weight * dels as f64 +
-                substitution_weight * subs as f64
+                insertion_weight * stats.insertions as f64 +
+                deletion_weight * stats.deletions as f64 +
+                substitution_weight * stats.substitutions as f64
             ) / n_ref.max(1) as f64;
 
             WerAnalysisResult {
                 wer,
                 wwer,
-                ld,
+                ld: stats.distance,
                 n_ref,
-                insertions: ins,
-                deletions: dels,
-                substitutions: subs,
-                inserted_words: ins_words,
-                deleted_words: del_words,
-                substituted_words: sub_words,
+                insertions: stats.insertions,
+                deletions: stats.deletions,
+                substitutions: stats.substitutions,
+                inserted_words: stats.inserted_words,
+                deleted_words: stats.deleted_words,
+                substituted_words: stats.substituted_pairs,
             }
         })
         .collect();
@@ -113,11 +131,11 @@ pub fn analysis<'py>(
     Ok(results)
 }
 
-/// Returns (levenshtein_distance, insertions, deletions, substitutions, inserted_words, deleted_words, substituted_pairs)
+/// Compute alignment statistics between reference and hypothesis strings.
 fn align_and_stats(
     ref_str: &str,
     hyp_str: &str,
-) -> (usize, usize, usize, usize, Vec<String>, Vec<String>, Vec<(String, String)>) {
+) -> AlignmentStats {
     let r_tokens: Vec<&str> = ref_str.split_whitespace().collect();
     let h_tokens: Vec<&str> = hyp_str.split_whitespace().collect();
     let m = r_tokens.len();
@@ -202,13 +220,13 @@ fn align_and_stats(
     deleted_words.reverse();
     substituted_words.reverse();
 
-    (
-        dp[m][n],
+    AlignmentStats {
+        distance: dp[m][n],
         insertions,
         deletions,
         substitutions,
         inserted_words,
         deleted_words,
-        substituted_words,
-    )
+        substituted_pairs: substituted_words,
+    }
 }

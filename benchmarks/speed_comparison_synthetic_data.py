@@ -4,8 +4,9 @@ import werpy
 import werx
 import jiwer
 import pywer
-from torchmetrics.text import WordErrorRate
+# from torchmetrics.text import WordErrorRate # TODO: Uncomment when supports Python 3.14
 import evaluate  # Import the evaluate package
+# import universal_edit_distance as ued # TODO: Uncomment when supports Python 3.14
 
 # --- Test Data (Repeated 10,000 times) ---
 reference_translation = [
@@ -51,23 +52,29 @@ def wer_jiwer(ref, hyp):
 def wer_pywer(ref, hyp):
     return pywer.wer(ref, hyp)
 
-def wer_torchmetrics(ref, hyp):
-    metric = WordErrorRate()
-    score = metric(ref, hyp)
-    return score.item()
+# TODO: Uncomment when supports Python 3.14
+# def wer_torchmetrics(ref, hyp):
+#     metric = WordErrorRate()
+#     score = metric(ref, hyp)
+#     return score.item()
 
 def wer_evaluate(ref, hyp):
     metric = evaluate.load("wer")  # Load the evaluate WER metric
     score = metric.compute(references=ref, predictions=hyp)
     return score
 
+# TODO: Uncomment when supports Python 3.14
+# def wer_ued(ref, hyp):
+#     return ued.word_error_rate(ref, hyp)
+
 package_funcs = {
     "werpy": wer_werpy,
     "werx": wer_werx,
     "jiwer": wer_jiwer,
     "pywer": wer_pywer,
-    "torchmetrics": wer_torchmetrics,
+    # "torchmetrics": wer_torchmetrics, # TODO: Uncomment when supports Python 3.14
     "evaluate": wer_evaluate,  # Add evaluate to the package functions
+    # "ued": wer_ued, # TODO: Uncomment when supports Python 3.14
 }
 
 # --- Benchmarks ---

@@ -5,9 +5,9 @@ Available Functions:
 - to_polars(results): Convert analysis results to a Polars DataFrame.
 - to_pandas(results): Convert analysis results to a Pandas DataFrame.
 """
-from typing import Any, Dict, List
+from typing import Any
 
-def _asdict(r: Any) -> Dict[str, Any]:
+def _asdict(r: Any) -> dict[str, Any]:
     """
     Convert a result object to a dictionary.
     Handles objects with a to_dict() method or plain dicts.
@@ -19,7 +19,7 @@ def _asdict(r: Any) -> Dict[str, Any]:
             return r
         raise TypeError(f"Object of type {type(r)} is not convertible to dict")
 
-def to_polars(results: List[Any]) -> Any:
+def to_polars(results: list[Any]) -> Any:
     """
     Convert analysis results to a Polars DataFrame.
     Requires Polars to be installed: pip install polars
@@ -31,7 +31,7 @@ def to_polars(results: List[Any]) -> Any:
 
     return pl.DataFrame([_asdict(r) for r in results])
 
-def to_pandas(results: List[Any]) -> Any:
+def to_pandas(results: list[Any]) -> Any:
     """
     Convert analysis results to a Pandas DataFrame.
     Requires Pandas to be installed: pip install pandas

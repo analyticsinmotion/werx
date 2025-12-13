@@ -23,8 +23,7 @@ pub fn wer<'py>(py_ref: Bound<'py, PyAny>, py_hyp: Bound<'py, PyAny>) -> PyResul
         .map(|(r, h)| {
             let r_tokens: Vec<&str> = r.split_whitespace().collect();
             let h_tokens: Vec<&str> = h.split_whitespace().collect();
-            let mut dp = Vec::new(); // Thread-local dp matrix
-            let distance = levenshtein_distance(&r_tokens, &h_tokens, &mut dp);
+            let distance = levenshtein_distance(&r_tokens, &h_tokens);
             (distance, r_tokens.len())
         })
         .reduce(
@@ -35,35 +34,33 @@ pub fn wer<'py>(py_ref: Bound<'py, PyAny>, py_hyp: Bound<'py, PyAny>) -> PyResul
     Ok(total_distance as f64 / total_words.max(1) as f64) // Avoid divide-by-zero; returns 0.0 if ref is empty
 }
 
-/// Levenshtein distance function using dynamic programming
-/// Reuses the `dp` matrix to avoid repeated allocations.
-#[inline]
-fn levenshtein_distance(a: &[&str], b: &[&str], dp: &mut Vec<Vec<usize>>) -> usize {
+/// Levenshtein distance using space-optimized rolling window dynamic programming.
+/// Maintains only two rows (previous and current) to minimize memory allocations.
+fn levenshtein_distance(a: &[&str], b: &[&str]) -> usize {
     let m = a.len();
     let n = b.len();
-
-    // Resize the dp matrix if necessary
-    dp.resize(m + 1, vec![0; n + 1]);
-    for row in dp.iter_mut() {
-        row.resize(n + 1, 0);
-    }
-
-    for i in 0..=m {
-        dp[i][0] = i;
-    }
+    
+    if m == 0 { return n; }
+    if n == 0 { return m; }
+    
+    let mut prev = vec![0usize; n + 1];
+    let mut curr = vec![0usize; n + 1];
+    
     for j in 0..=n {
-        dp[0][j] = j;
+        prev[j] = j;
     }
-
+    
     for i in 1..=m {
+        curr[0] = i;
         for j in 1..=n {
-            let cost = if a[i - 1] == b[j - 1] { 0 } else { 1 };
-            dp[i][j] = std::cmp::min(
-                std::cmp::min(dp[i - 1][j] + 1, dp[i][j - 1] + 1),
-                dp[i - 1][j - 1] + cost,
-            );
+            if a[i - 1] == b[j - 1] {
+                curr[j] = prev[j - 1];
+            } else {
+                curr[j] = prev[j].min(curr[j - 1]).min(prev[j - 1]) + 1;
+            }
         }
+        std::mem::swap(&mut prev, &mut curr);
     }
-
-    dp[m][n]
+    
+    prev[n]
 }
