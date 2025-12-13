@@ -40,9 +40,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Removed PyO3 deprecation warnings during Rust extension compilation.
 
-### Removed
-<!-- Add removals/deprecations here -->
-
 ---
 
 ## [0.3.0] - 2025-05-16
