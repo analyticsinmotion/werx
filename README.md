@@ -17,6 +17,7 @@
         <a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Ruff"></a>&nbsp;
         <a href="https://www.rust-lang.org"><img src="https://img.shields.io/badge/Powered%20by-Rust-black?logo=rust&logoColor=white" alt="Powered by Rust"></a>&nbsp;
         <a href="https://app.hex.tech/019b36f2-4207-7001-b0b3-3552a1f76dcf/app/WER-Benchmark-Library-Comparison-031vO87TH9JBCdMkVcpkIL/latest"><img src="https://img.shields.io/badge/Hex-View%20Benchmarks-purple?logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDBMMyA2VjE4TDEyIDI0TDIxIDE4VjZMMTIgMFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPg==&logoColor=white" alt="View Benchmarks"></a>&nbsp;
+        <a href="https://colab.research.google.com/drive/1ebkqrU5EfFVXNkFPCjVaTsxMRMWsL2oR?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"></a>&nbsp;
         <a href="https://github.com/analyticsinmotion"><img src="https://raw.githubusercontent.com/analyticsinmotion/.github/main/assets/images/analytics-in-motion-github-badge-rounded.svg" alt="Analytics in Motion"></a>
         <!-- &nbsp;
         <a href="https://pypi.org/project/werx/"><img src="https://img.shields.io/pypi/dm/werx?label=PyPI%20downloads"></a>&nbsp;
